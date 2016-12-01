@@ -725,6 +725,7 @@ gulp.task('_release', () => {
       'gulpfile.babel.js',
       './util?/**/*'
     ])
+    .pipe($.if(/\.css/i, $.rename({ suffix: '.rtl' })))
     .pipe(gulp.dest('_release'));
 });
 
