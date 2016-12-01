@@ -1,0 +1,7 @@
+#demo-menu-lower-left {
+  margin-left: 40%;
+}
+html[dir="rtl"] #demo-menu-lower-left {
+  margin-right: 40%;
+  margin-left: auto;
+}
