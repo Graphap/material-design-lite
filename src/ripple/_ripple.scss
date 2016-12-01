@@ -15,7 +15,7 @@
  */
 
 @import "../variables";
-
+/*rtl:begin:ignore*/
 .mdl-ripple {
   background       : $ripple-bg-color;
   border-radius    : 50%;
@@ -40,3 +40,4 @@
     opacity: 0.3;
   }
 }
+/*rtl:end:ignore*/

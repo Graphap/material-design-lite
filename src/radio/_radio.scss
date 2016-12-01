@@ -50,6 +50,10 @@
     -webkit-appearance: none;
     appearance: none;
     border: none;
+    
+    .mdl-list__item-secondary-action & {
+        position:static;
+    }
   }
 }
 

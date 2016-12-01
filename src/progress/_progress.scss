@@ -57,6 +57,9 @@
     background-image: linear-gradient(to right, $progress-secondary-color, $progress-secondary-color),
       linear-gradient(to right, $progress-main-color, $progress-main-color);
     mask: url('#{$progress-image-path}/buffer.svg?embed');
+    /*rtl:raw:
+    transform: scaleX(-1);
+    */
   }
 }
 

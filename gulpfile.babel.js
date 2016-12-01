@@ -67,6 +67,9 @@ const AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
+const RTLCSS_CONFIG = {
+};
+
 const SOURCES = [
   // Component handler
   'src/mdlComponentHandler.js',
@@ -136,6 +139,7 @@ gulp.task('styles:dev', () => {
       webRoot: 'src'
     }))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.rtlcss(RTLCSS_CONFIG))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe($.size({title: 'styles'}));
 });
@@ -152,6 +156,7 @@ gulp.task('styletemplates', () => {
     }))
     .pipe($.cssInlineImages({webRoot: 'src'}))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.rtlcss(RTLCSS_CONFIG))
     .pipe(gulp.dest('.tmp'))
     // Concatenate Styles
     .pipe($.concat('material.css.template'))
@@ -177,6 +182,7 @@ gulp.task('styles', () => {
     }))
     .pipe($.cssInlineImages({webRoot: 'src'}))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.rtlcss(RTLCSS_CONFIG))
     .pipe(gulp.dest('.tmp'))
     // Concatenate Styles
     .pipe($.concat('material.css'))
@@ -199,6 +205,7 @@ gulp.task('styles-grid', () => {
       onError: console.error.bind(console, 'Sass error:')
     }))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.rtlcss(RTLCSS_CONFIG))
     .pipe(gulp.dest('.tmp'))
     // Concatenate Styles
     .pipe($.concat('material-grid.css'))
@@ -387,6 +394,7 @@ gulp.task('demoresources', () => {
     })))
     .pipe($.cssInlineImages({webRoot: 'src'}))
     .pipe($.if('*.css', $.autoprefixer(AUTOPREFIXER_BROWSERS)))
+    .pipe($.if('*.css', $.rtlcss(RTLCSS_CONFIG)))
     .pipe(gulp.dest('dist/components'));
 });
 
@@ -478,6 +486,8 @@ gulp.task('assets', () => {
       interlaced: true
     })))
     .pipe($.if(/\.css/i, $.autoprefixer(AUTOPREFIXER_BROWSERS)))
+    .pipe($.if(/\.css/i, $.rtlcss(RTLCSS_CONFIG)))
+    .pipe($.if(/prism\-default\.css/i, $.rtlcss(RTLCSS_CONFIG)))
     .pipe($.if(/\.css/i, $.csso()))
     .pipe($.if(/\.js/i, $.uglify({
       preserveComments: 'some',
@@ -730,6 +740,7 @@ gulp.task('publish:release', ['_release'], () => {
 gulp.task('templates:styles', () => {
   return gulp.src('templates/**/*.css')
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.rtlcss(RTLCSS_CONFIG))
     // FIXME: This crashes. It's a bug in gulp-csso,
     // not csso itself.
     //.pipe($.csso())

@@ -620,6 +620,7 @@ _:-ms-input-placeholder, :root .snippet-group .snippet-demo {
 _:-ms-input-placeholder, :root .snippet-group .snippet-demos .snippet-demo-padding {
   width: auto;
 }
+/*rtl:begin:ignore*/
 .snippet-group .snippet-code {
   position: relative;
   overflow: hidden;
@@ -685,6 +686,7 @@ _:-ms-input-placeholder, :root .snippet-group .snippet-demos .snippet-demo-paddi
 .snippet-group .snippet-code .codepen-extra-css {
   display:none;
 }
+/*rtl:end:ignore*/
 @media (max-width: 850px) {
   .snippet-group .snippet-demo {
     padding-left: 5px;
@@ -1348,3 +1350,43 @@ code[class*=language-], pre[class*=language-] {
   max-width: 640px;
   margin: 60px 0 40px 0;
 }
+/*rtl:begin:ignore*/
+div#carbonads {
+    direction:ltr;
+    min-height: 120px;
+    max-width: 330px; 
+    margin: 15px auto 15px 15px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+}
+div#carbonads:after:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.carbon-wrap {
+    display: block;
+    padding: 5px;   
+}
+.carbon-img {
+    float: left;
+    margin: 5px;
+}
+.carbon-text {
+    display:block;
+    color: rgb(53, 54, 57);
+    font-size: .8em;
+    text-decoration: none;
+    margin: 5px 0 15px 5px;
+}
+.carbon-poweredby {
+    float:right;
+    font-size: .7em;
+    text-decoration: none;
+    color: rgb(53, 147, 210);
+}
+/*rtl:end:ignore*/

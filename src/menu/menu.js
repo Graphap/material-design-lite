@@ -188,21 +188,26 @@
     if (this.element_ && this.forElement_) {
       var rect = this.forElement_.getBoundingClientRect();
       var forRect = this.forElement_.parentElement.getBoundingClientRect();
-
+      var rtl = document.documentElement.dir === 'rtl';
       if (this.element_.classList.contains(this.CssClasses_.UNALIGNED)) {
         // Do not position the menu automatically. Requires the developer to
         // manually specify position.
       } else if (this.element_.classList.contains(
+          rtl ? this.CssClasses_.BOTTOM_LEFT :
           this.CssClasses_.BOTTOM_RIGHT)) {
         // Position below the "for" element, aligned to its right.
         this.container_.style.right = (forRect.right - rect.right) + 'px';
         this.container_.style.top =
             this.forElement_.offsetTop + this.forElement_.offsetHeight + 'px';
-      } else if (this.element_.classList.contains(this.CssClasses_.TOP_LEFT)) {
+      } else if (this.element_.classList.contains(
+          rtl ? this.CssClasses_.TOP_RIGHT :
+          this.CssClasses_.TOP_LEFT)) {
         // Position above the "for" element, aligned to its left.
         this.container_.style.left = this.forElement_.offsetLeft + 'px';
         this.container_.style.bottom = (forRect.bottom - rect.top) + 'px';
-      } else if (this.element_.classList.contains(this.CssClasses_.TOP_RIGHT)) {
+      } else if (this.element_.classList.contains(
+          rtl ? this.CssClasses_.TOP_LEFT :
+          this.CssClasses_.TOP_RIGHT)) {
         // Position above the "for" element, aligned to its right.
         this.container_.style.right = (forRect.right - rect.right) + 'px';
         this.container_.style.bottom = (forRect.bottom - rect.top) + 'px';
